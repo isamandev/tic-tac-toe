@@ -1,0 +1,11 @@
+@import 'tailwindcss';
+
+@theme {
+	--color-button-bg-primary: #c9f9fc;
+	--color-button-bg-secondary: #fbb500;
+	--color-board-bg-secondary: #ffffff;
+	--color-border: #000000;
+	--color-light-gray: #ebebeb;
+	--color-cover: #3d7ad6;
+	--font-inter: 'Inter', sans-serif;
+}

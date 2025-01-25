@@ -117,31 +117,31 @@ const Play = () => {
 
 	return (
 		<>
-			<div className='bg-light-gray flex h-screen w-full items-center justify-center gap-10'>
-				<div className='flex gap-5'>
-					<div className='flex flex-col justify-center gap-5'>
-						<img src={Players} alt='player' className='h-20' />
-						<div className='shadow-solid-board flex items-center justify-center rounded-xl border-4 p-10'>
+			<div className='bg-light-gray flex min-h-screen w-full items-center justify-center gap-10'>
+				<div className='flex flex-col items-center gap-5 py-5 lg:flex-row'>
+					<div className='flex flex-col items-center justify-center gap-5'>
+						<img src={Players} alt='player' className='h-20 w-auto 2xl:h-30' />
+						<div className='shadow-solid-board flex max-w-max items-center justify-center rounded-xl border-4 p-2 md:p-10 lg:w-full'>
 							<div className='grid grid-cols-3 gap-4'>
 								{board.map((cell, index) => (
 									<div key={index} className='z-30'>
-										<Button type='board' size={100} onClick={() => handleClick(index)}>
+										<Button type='board' className='size-20 lg:size-32' onClick={() => handleClick(index)}>
 											{cell && <img src={cell == 'X' ? X : O} alt='player' className='size-14' />}
 										</Button>
 									</div>
 								))}
 							</div>
 						</div>
-						<div className='flex justify-between gap-5'>
+						<div className='flex w-full gap-4'>
 							<Button onClick={resetGame}>reset</Button>
 							<Button onClick={undoMove}>undo</Button>
 							<Button onClick={redoMove}>redo</Button>
 						</div>
 					</div>
-					<div className='flex h-full w-96 flex-col gap-5'>
-						<h3 className='py-7 text-center font-black uppercase'>History</h3>
+					<div className='flex h-full w-full flex-col gap-5 lg:w-max'>
+						<h3 className='py-7 text-center text-6xl font-black uppercase'>History</h3>
 						{history.map((entry, step) => (
-							<Button key={step + 1} onClick={() => jumpToStep(step)}>
+							<Button key={step + 1} onClick={() => jumpToStep(step)} className='px-5'>
 								Step {step + 1}: {entry.move.player} - Row {entry.move.row}, Col {entry.move.col}
 							</Button>
 						))}

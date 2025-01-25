@@ -1,7 +1,7 @@
 const Loading = () => {
 	return (
-		<div className='fixed top-0 left-0 w-full h-full flex items-center justify-center z-50 bg-light-gray'>
-			<div className='border-gray-500 font-inter font-black text-2xl'>Loading . . .</div>
+		<div className='bg-light-gray fixed top-0 left-0 z-50 flex h-full w-full items-center justify-center'>
+			<div className='font-inter border-gray-500 text-2xl font-black'>Loading . . .</div>
 		</div>
 	)
 }

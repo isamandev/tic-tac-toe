@@ -3,22 +3,27 @@ import './App.css'
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
 import Start from './pages/Start'
 import Play from './pages/Play'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import Loading from './components/Loading'
 
 const AppContent = () => {
 	const location = useLocation()
 	const [loading, setLoading] = useState(false)
+	const previousPathname = useRef(location.pathname)
 
 	useEffect(() => {
-		setLoading(true)
+		if (previousPathname.current !== location.pathname) {
+			setLoading(true)
 
-		const timer = setTimeout(() => {
-			setLoading(false)
-		}, 1000)
+			const timer = setTimeout(() => {
+				setLoading(false)
+			}, 1000)
 
-		return () => {
-			clearTimeout(timer)
+			previousPathname.current = location.pathname
+
+			return () => {
+				clearTimeout(timer)
+			}
 		}
 	}, [location])
 
